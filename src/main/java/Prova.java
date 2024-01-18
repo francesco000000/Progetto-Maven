@@ -1,10 +1,15 @@
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Prova {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Product p1 = new Product(01,"maglia","boy",107.5);
         Product p2 = new Product(02,"scarpe","boy",10.0);
         Product p3 = new Product(03,"biberon","baby",2.5);
@@ -31,5 +36,12 @@ public class Prova {
         System.out.println(listaOrdini.stream().collect(Collectors.groupingBy(Order::getCustomer)));
         System.out.println(listaProdotti.stream().mapToDouble(Product::getPrice).max().getAsDouble());
         System.out.println(listaProdotti.stream().map(Product::getCategory));
+
+
+            File file = new File("dirProdotti/prodotti.txt");
+            String stringaProdotti = "ciao";
+        FileUtils.writeStringToFile(file, stringaProdotti, Charset.defaultCharset(), true);
+        FileUtils.delete(file);
+
     }
 }
