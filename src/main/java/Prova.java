@@ -41,7 +41,7 @@ public class Prova {
             File file = new File("dirProdotti/prodotti.txt");
             String stringaProdotti = "ciao";
         FileUtils.writeStringToFile(file, stringaProdotti, Charset.defaultCharset(), true);
-
+        FileUtils.delete(file);
 
     }
 }
